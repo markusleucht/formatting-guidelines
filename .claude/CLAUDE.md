@@ -42,8 +42,9 @@ ALL externally sourced content must include metadata at END of document:
 - Anthropic: #2020s (Claude development)
 
 ## Important Paths
-- Project root: `/Users/markus/formatting_guidelines/copy_writer/`
+- Project root: `/Users/markus/formatting_guidelines/`
 - Skills installed: `~/.claude/skills/pdf/` and `~/.claude/skills/skill-creator/`
+- GitHub: https://github.com/markusleucht/formatting-guidelines
 
 ## Session Ending Protocol
 
@@ -63,7 +64,9 @@ Add to Session History:
 - Technical learnings
 - Next priorities
 
-### 3. Git Commit & Push
+### 3. Git Commit & Push (Using GitHub CLI)
+
+**Standard commit and push:**
 ```bash
 git status
 git add .
@@ -81,6 +84,17 @@ EOF
 )"
 git push origin main
 ```
+
+**Create new repository (first time only):**
+```bash
+gh repo create [name] --public --source=. --remote=origin --push
+```
+
+**GitHub CLI commands available:**
+- `gh repo create` - Create new repository
+- `gh pr create` - Create pull request
+- `gh issue create` - Create issue
+- `gh repo view` - View repository details
 
 ## Session History
 
