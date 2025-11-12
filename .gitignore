@@ -1,0 +1,10 @@
+# PDFs
+*.pdf
+
+# macOS
+.DS_Store
+
+# Temporary files
+*.tmp
+*.bak
+*~
