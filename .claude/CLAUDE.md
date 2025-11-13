@@ -46,13 +46,15 @@ ALL externally sourced content must include metadata at END of document:
 ### Author Portraits Philosophy
 **Focus on the PERSON, not the work:**
 - Author portraits describe the human being - their life, personality, struggles, achievements
+- **Maximum 2 lines (30-50 words)** - extreme compression to essence
+- Only most important career points: Origin → Breakthrough → Current approach
 - Background tags provide biographical context - where they came from, what shaped them, their journey
 - Works may be mentioned but only to illuminate the person, never as the primary focus
 - For institutions (The Economist, Anthropic), describe the history and character of the institution itself
 
 **Examples:**
 - ❌ Bad: "Barbara Minto's Pyramid Principle revolutionized business communication..."
-- ✅ Good: "Barbara Minto started as a secretary earning $400/month, boldly applied to Harvard Business School without an undergraduate degree..."
+- ✅ Good: "Barbara Minto boldly applied to Harvard Business School without an undergraduate degree, graduating in 1963 as one of eight women in 600 men. McKinsey hired her as their first female MBA consultant, where she developed the Pyramid Principle and MECE framework."
 
 ### Decade Assignment Examples
 - Paul Graham: #2000s (Y Combinator era)
@@ -282,3 +284,60 @@ gh repo create [name] --public --source=. --remote=origin --push
 - System is now complete for educational archiving with proper attribution
 - `/meta` process guides provide comprehensive writing framework
 - Ready for future content additions following established patterns
+
+**Session 2025-11-13 (Part 3 - YouTube System Enhancement):**
+- **Major accomplishment:** YouTube extraction system now fully dynamic and automated
+  - Extended `fetch_youtube_transcript.py` with automatic metadata extraction
+  - Added `channel_name` extraction via oEmbed API `author_name` field
+  - Added `published_date` (YYYY-MM-DD) and `published_formatted` ("Month YYYY") extraction
+  - Script uses oEmbed API + HTML scraping for complete metadata (no API key needed)
+  - Graceful degradation: Works without requests library, returns null for metadata
+- **Compression requirement:** Drastically reduced verbosity by 60%
+  - Author Portraits: 4 lines → 2 lines (30-50 words) in `/output/author_portraits.md`
+  - #background Tags: 120+ words → 3 sentences (40-60 words) in documents
+  - Updated ALL existing portraits (Paul Graham, Barbara Minto, Lee Robinson, etc.)
+  - Updated both YouTube extraction documents with compressed #background tags
+- **Documentation enhancement:** Complete guideline updates
+  - `youtube_extraction_guidelines.md`: Clear separation of Author Portrait vs. #background tag
+  - `/youtube` command: Explicit instruction "MAXIMUM 3 SENTENCES (40-60 words)"
+  - Added good vs. bad examples with word counts
+  - CLAUDE.md: Updated with new compression rules
+- **Document formatting fixes:**
+  - Added newlines between metadata tags for clean Markdown preview
+  - Corrected publication dates (Daniel Miessler: September 2025, Anthropic: September 2024)
+- **Two YouTube extractions completed:**
+  - Daniel Miessler: "Building Your Own Unified AI Assistant Using Claude Code"
+  - Anthropic: "AI prompt engineering: A deep dive" (Roundtable with 4 participants)
+
+**Key learnings:**
+- **Compression is clarity:** 60% reduction forced focus on essence, not detail
+- **Metadata automation:** oEmbed API + HTML scraping provides complete info without manual entry
+- **Author Portrait ≠ #background tag:** Two distinct artifacts with different purposes
+  - Author Portrait: For `/output/author_portraits.md` collection (2 lines)
+  - #background tag: For document metadata (3 sentences)
+- **Edge case handling:** Roundtable videos use channel owner as #author, list participants separately
+- **Dynamic date extraction:** System now pulls correct publish dates automatically from YouTube
+
+**Technical learnings:**
+- oEmbed API provides: `title`, `author_name` (channel)
+- HTML scraping needed for: `uploadDate` (JSON-LD structured data)
+- Regex pattern: `r'"uploadDate":"(\d{4}-\d{2}-\d{2})'`
+- Windows command line: Pipe handling issues with Python JSON output
+- Script return structure includes all metadata in single JSON response
+
+**Pitfalls avoided:**
+- Initially shortened Author Portraits when user meant #background tags in documents
+- Recognized distinction between two artifacts after clarification
+- Updated both artifacts appropriately with different compression targets
+
+**Critical findings:**
+- PAI (Personal AI Infrastructure) mobility requires centralized context system
+- All templates now in `~/.claude/context/projects/formatting-guidelines/`
+- Script modifications tested immediately on both videos to verify functionality
+- Compression improves readability - long biographical paragraphs lose focus
+
+**Next priorities:**
+- YouTube extraction system fully automated and ready for production use
+- All future extractions will automatically use new compression rules
+- System dynamically extracts: date, title, channel name, transcript
+- No manual metadata entry required going forward
