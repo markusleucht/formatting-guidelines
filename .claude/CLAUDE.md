@@ -341,3 +341,72 @@ gh repo create [name] --public --source=. --remote=origin --push
 - All future extractions will automatically use new compression rules
 - System dynamically extracts: date, title, channel name, transcript
 - No manual metadata entry required going forward
+
+**Session 2025-11-13 (Part 4 - YouTube Command Architecture Fix):**
+- **Problem identified:** /youtube command lost context after loading transcript
+  - User requests after transcript load became separate conversations
+  - All guidelines (70-110 lines, numbered list, action-oriented) were lost
+  - Command context did not persist through processing
+- **Solution implemented:** Dual-mode architecture for /youtube command
+  - **Mode 1 (Interactive):** `/youtube <url>` - loads transcript, waits for queries
+  - **Mode 2 (Direct Extraction):** `/youtube <url> "prompt"` - loads and processes immediately
+  - Mode 2 keeps command context active throughout execution
+  - All guidelines remain enforced: OUTPUT_FORMAT, PROJECT_EXTRACTION_GUIDELINES
+- **Command updates (537 lines total):**
+  - Added Usage Modes section explaining both modes
+  - Updated argument-hint: `<youtube-url> [optional-prompt]`
+  - Rewrote INSTRUCTIONS with Step 0 (mode detection logic)
+  - Added Technical Implementation Notes (argument parsing)
+  - Added Example Workflows showing both modes in action
+  - Added Session Start Verification section
+- **Session Start Verification:**
+  - Command must work reliably without prior context
+  - All guidelines explicitly stated (no assumptions)
+  - Self-contained: paths absolute, examples embedded
+  - Quality checklist for self-verification
+  - Testing protocol documented
+- **Critical insight:** Slash commands lose context when follow-up is in normal conversation
+  - Original: `/youtube <url>` → [load] → User asks → separate conversation (guidelines lost)
+  - Fixed: `/youtube <url> "prompt"` → [load + process] → command context active (guidelines enforced)
+
+**Key learnings:**
+- **Command architecture matters:** Follow-up prompts outside command context lose all guidelines
+- **Mode 2 solves persistence:** Optional second argument keeps command active during processing
+- **Self-contained commands:** Must work at session start without explanation
+- **Testing requirement:** User insisted command work "without context at session start" - all guidelines embedded
+
+**Technical learnings:**
+- Argument parsing: `$ARGUMENTS` split into URL (first token) + optional prompt (remaining text)
+- Mode detection: Check if text exists after URL → Mode 2, else Mode 1
+- Python script call: Only URL passed to fetch_youtube_transcript.py, not full $ARGUMENTS
+
+**Pitfalls avoided:**
+- Initially tried to "fix" output style without understanding root cause
+- Recognized the architectural problem: context loss between command and follow-up
+- User correctly diagnosed: "Guidelines should persist when command is running"
+
+**Critical findings:**
+- /youtube command now 537 lines (from ~370) - necessary for complete documentation
+- Session Start Verification section ensures reliability without context
+- All paths absolute, all examples concrete, all guidelines explicit
+
+**Next priorities:**
+- Test Mode 2 with real extraction to verify guidelines enforcement
+- Update other commands that might have similar context-loss issues
+- Consider Mode 2 pattern for other interactive commands
+
+**Session 2025-11-13 (Part 5 - Lessons Learned & Simplicity):**
+- **Key learning:** User wants EINFACHHEIT, nicht Optimierung
+- Over-engineering Fehler: Vorschlag komplexer Skills-Migration für simple Modularitäts-Frage
+- **Correct answer:** Skills statt Slash Commands für Multi-Step-Workflows (offiziell dokumentiert)
+- **But:** Aktueller dual-mode Command funktioniert gut - "don't fix what isn't broken"
+- Migration nur wenn wirklich separate kombinierbare Module benötigt werden
+- Pitfall: Zu viele Features auf einmal (Token Reduction, Code Execution, etc.) ohne User-Request
+- **What to do better:** Erst einfache Antwort, dann fragen ob Details gewünscht
+- Current solution (537-line dual-mode command) ist angemessen für den Use-Case
+- No changes needed unless user explicitly requests modularization
+
+**Critical findings:**
+- User's need for simplicity > optimization
+- Working solution > theoretically better architecture
+- Answer the question asked, not the question you think they should ask
