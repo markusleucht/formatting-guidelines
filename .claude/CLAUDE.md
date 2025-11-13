@@ -165,7 +165,10 @@ ALL externally sourced content must include metadata at END of document:
 **Key insight:** Premature optimization kills progress. Don't polish sentences before structure is solid. Don't edit while drafting. Each stage has its purpose.
 
 ## Important Paths
-- Project root: `/Users/markus/formatting_guidelines/`
+- Project root (Windows): `C:\Users\mleucht\Desktop\AI instructions\formatting-guidelines\`
+- Project root (macOS): `/Users/markus/formatting_guidelines/`
+- Obsidian inbox (Windows): `C:\Users\mleucht\iCloudDrive\iCloud~md~obsidian\00_Inbox\`
+- Obsidian inbox (macOS): `/Users/markus/Library/Mobile Documents/iCloud~md~obsidian/Documents/00_Inbox/`
 - Skills installed: `~/.claude/skills/pdf/` and `~/.claude/skills/skill-creator/`
 - GitHub: https://github.com/markusleucht/formatting-guidelines
 
@@ -410,3 +413,53 @@ gh repo create [name] --public --source=. --remote=origin --push
 - User's need for simplicity > optimization
 - Working solution > theoretically better architecture
 - Answer the question asked, not the question you think they should ask
+
+**Session 2025-11-13 (Part 6 - Modular Architecture & Path Configuration):**
+- **Major accomplishment:** YouTube extraction of Claude Code modular architecture guide
+  - Extracted IndyDevDan video "I finally CRACKED Claude Agent Skills"
+  - Created comprehensive decision guide: Skills vs MCP vs Subagents vs Slash Commands
+  - Document: `claude_code_modular_architecture_decision_guide.md` (10 sections, 10KB)
+  - Focus on modularity and composition patterns
+- **File management:** Copied 8 documents to Obsidian inbox
+  - claude_agent_skills_overview.md
+  - claude_code_modular_architecture_decision_guide.md
+  - claude_code_skills.md
+  - dem_modell_vertrauen_und_grenzen_testen.md
+  - document_skills_potential.md
+  - personal_ai_infrastructure_session_management.md
+  - text_als_schnittstelle_zu_ki_agenten.md
+  - vision_table_extraction_guide.md
+- **Critical path fix:** Windows iCloud Obsidian structure different from macOS
+  - Windows: `C:\Users\mleucht\iCloudDrive\iCloud~md~obsidian\00_Inbox\` (NO Documents folder)
+  - macOS: `/Users/markus/Library/Mobile Documents/iCloud~md~obsidian/Documents/00_Inbox/`
+  - Updated both CLAUDE.md and /youtube command with dual-path configuration
+
+**Key learnings:**
+- **Skills = Modularity + Automatic:** Dedicated directory structure, progressive disclosure, agent-triggered
+- **Decision framework:** External → MCP, Parallel → Subagent, Automatic → Skill, Manual → Slash Command
+- **Composability is power:** Skills can orchestrate MCP + Subagents + other Skills
+- **Global vs project commands:** `~/.claude/commands/` (user-global) vs `./.claude/commands/` (project-specific)
+- **Cross-platform paths:** Need to document both Windows and macOS paths for portability
+
+**Technical learnings:**
+- Git Bash on Windows requires forward slashes: `/c/Users/...` not `C:\Users\...`
+- Windows iCloud path structure: `iCloudDrive\iCloud~md~obsidian\` directly, no Documents subfolder
+- Global commands work across all projects but can reference project-specific context
+- YouTube Mode 2 (Direct Extraction) worked flawlessly with all guidelines enforced
+
+**Pitfalls avoided:**
+- Initially tried Windows backslash paths in bash commands
+- Assumed macOS path structure would match Windows
+- Could have only updated CLAUDE.md without fixing youtube command
+
+**Critical findings:**
+- Bash cp command with spaces in paths requires proper quoting and forward slashes on Windows
+- iCloud Drive sync creates different folder structures on different OS
+- Documentation of both OS paths enables seamless cross-platform workflow
+- YouTube extraction system handles technical content (architecture decisions) as well as conceptual content
+
+**Next priorities:**
+- All Claude Code architecture knowledge now in Obsidian for reference
+- Cross-platform path configuration complete
+- Ready for future YouTube extractions with correct path handling
+- Consider creating similar decision guides for other technical topics
