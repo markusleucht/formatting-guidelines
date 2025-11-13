@@ -8,10 +8,17 @@ Content archiving and attribution system for educational resources with focus on
 - Language: Deutsch/English mixed, direkte Kommunikation
 
 ## Project Structure
-- `/leerob/`: Lee Robinson's essays on developer topics
-- `/documents/`: Technical documentation and guides
-- `CONTENT_ATTRIBUTION_RULES.md`: Core attribution guidelines
-- `author_portraits.md`: Author biographies
+- `/sources/`: Original source materials (Kleist, Lee Robinson essays, etc.)
+- `/output/`: Reference guides, author portraits, archived content
+  - `author_portraits.md`: Consolidated author biographies (focus on PERSON)
+  - `*_reference.md`: Comprehensive guides distilled from source materials
+  - `/leerob/`: Lee Robinson's essays
+- `/meta/`: Writing process documentation (4-stage iterative process)
+  - `1_thinking.md`: Pre-writing - purpose, reader, message, structure
+  - `2_drafting.md`: First draft - door closed, momentum, discovery
+  - `3_revising.md`: Restructure - door open, logic, 10% cut
+  - `4_refining.md`: Polish - clarity, word choice, final details
+- `/documents/`: Technical documentation and guides (legacy)
 
 ## Key Rules
 
@@ -51,7 +58,109 @@ ALL externally sourced content must include metadata at END of document:
 - Paul Graham: #2000s (Y Combinator era)
 - Barbara Minto: #1970s (McKinsey/Pyramid Principle)
 - Lee Robinson: #2020s (current peak at Cursor)
+- Stephen King: #1970s (breakthrough with Carrie, peak horror era)
+- Rolf Hichert: #2000s (IBCS development)
+- Heinrich von Kleist: #1800s (active 1777-1811)
 - Anthropic: #2020s (Claude development)
+
+## Content Types and Guidelines
+
+### Reference Guides (`/output/*_reference.md`)
+**Purpose:** Comprehensive, educational reference documents distilled from source materials
+
+**Structure:**
+- Title + Overview
+- Table of Contents (10-20 sections)
+- Part I, II, III... (major sections)
+- Conclusion with synthesis from all sources
+- Full attribution at end (all 5 tags)
+
+**Length guidance:**
+- Standard: 20-40 KB (Stephen King, Minto, Economist)
+- Comprehensive: 100 KB+ when completeness requested (Hichert SUCCESS)
+- Completeness before brevity when specified
+
+**Key principles:**
+- Synthesize, don't just summarize
+- Include concrete examples and checklists
+- Cross-reference related concepts
+- Make actionable and practical
+
+### Author Portraits (`/output/author_portraits.md`)
+**Critical rule:** Focus on the PERSON, not their works
+
+**What to include:**
+- Birth, early life, education (forming years)
+- Career journey with struggles and breakthroughs
+- Character traits and driving motivations
+- Key relationships and influences (e.g., Goethe's rejection of Kleist)
+- Impact and legacy (how others see them)
+- Tragic or remarkable life events that shaped them
+
+**What to avoid:**
+- Describing their works in detail
+- Academic summaries of their theories
+- Lists of publications
+- Focus on output rather than person
+
+**Language:**
+- German for German authors (Kleist) if appropriate
+- English for international figures
+- Match the cultural context
+
+### Source Materials (`/sources/`)
+**For public domain content:**
+- Archive 1:1 verbatim when copyright-free (e.g., Kleist 1811)
+- Full original text preserved
+- Minimal formatting changes
+- Attribution metadata at end
+
+**For copyrighted content:**
+- Reference guides only (fair use, educational)
+- Never reproduce copyrighted work verbatim
+- Distill principles and create new synthesis
+
+## The 4-Stage Iterative Writing Process
+
+**Core philosophy:** Writing is iterative. Separate thinking from drafting, drafting from revising, revising from refining.
+
+### Stage 1: THINKING (Before Writing)
+**Goal:** Clarify before you write
+- Answer 3 fundamental questions: Why? For whom? What message?
+- Know your purpose (inform, persuade, explore)
+- Understand your reader deeply
+- Define your one message (complete sentence)
+- Choose structure (Pyramid, SCQA, Discovery mode)
+- **Output:** Clear plan, ready to draft
+
+### Stage 2: DRAFTING (First Draft)
+**Goal:** Get words on page without self-censorship
+- **King's "Door Closed":** Write for yourself, not audience
+- Two modes: Discovery (Kleist - finding your message) or Structured (Minto - filling framework)
+- Maintain momentum - don't edit while drafting
+- Accept imperfection - first drafts are for getting it down, not right
+- **Output:** Complete rough draft, ready to revise
+
+### Stage 3: REVISING (Restructure & Strengthen)
+**Goal:** Make it work for readers
+- **King's "Door Open":** Now write for readers
+- Fix structure (SCQA, Pyramid logic)
+- Test logic (Minto's MECE, vertical/horizontal relationships)
+- **Cut 10%:** Kill your darlings ruthlessly
+- Improve flow and transitions
+- Get feedback from trusted readers
+- **Output:** Solid structure, sound logic, tight content
+
+### Stage 4: REFINING (Polish to Excellence)
+**Goal:** Perfect every detail
+- Sentence-level clarity (every sentence crystal clear)
+- Word choice (simple, precise, concrete - Economist standards)
+- Eliminate weak constructions (adverbs, passive voice, hedging)
+- Rhythm and pace (vary sentence length, read aloud)
+- Final checks (grammar, consistency, typos)
+- **Output:** Publication-ready excellence
+
+**Key insight:** Premature optimization kills progress. Don't polish sentences before structure is solid. Don't edit while drafting. Each stage has its purpose.
 
 ## Important Paths
 - Project root: `/Users/markus/formatting_guidelines/`
