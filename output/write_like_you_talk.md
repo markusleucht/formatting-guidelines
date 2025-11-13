@@ -31,5 +31,5 @@ Writing conversationally positions you ahead of most writers automatically. The 
 #author: Paul Graham
 #published: October 2015
 #source: https://paulgraham.com/talk.html
-#background: Computer scientist, entrepreneur, and essayist. Co-founder of Y Combinator. Known as a "hacker philosopher" whose essays shaped startup culture.
+#background: Paul Graham was born in Weymouth, England on November 13, 1964, and moved to Pittsburgh with his family in 1968. He earned a BA in philosophy from Cornell University in 1986, then MS and PhD in Computer Science from Harvard (1988, 1990), while also studying painting at Rhode Island School of Design and the Accademia di Belle Arti in Florence. After creating the programming language Arc and co-founding Viaweb (later Yahoo! Store), he started Y Combinator in 2005 with Trevor Blackwell, Jessica Livingston (whom he married in 2008), and Robert Morris to provide seed funding to startups. Y Combinator has funded over 3,000 startups including Airbnb, Dropbox, and Reddit. Technology journalist Steven Levy describes him as a "hacker philosopher" whose essays on paulgraham.com have profoundly shaped how founders think about startups. He stepped down from day-to-day operations at Y Combinator in 2014 and has lived in England with his wife and two children since 2016.
 #decade: #2000s
